@@ -8,8 +8,13 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  post '/graphql', to: 'graphql#execute'
+
   # Development only routes
-  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
+  if Rails.env.development?
+    mount Sidekiq::Web => '/sidekiq' # http://localhost:3000/sidekiq
+    # ADD YOUR DEVELOPMENT ROUTES HERE
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
