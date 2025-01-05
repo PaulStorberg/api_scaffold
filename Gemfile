@@ -3,12 +3,15 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 # Rails
-gem 'rails', '~> 7.0.7'
+gem 'rails', '~> 7.1.0'
 
 # Auth
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-apple'
+
+# Database
+gem 'pg'
 
 # GraphQL
 gem 'graphql'
@@ -38,6 +41,7 @@ end
 # Performance & Caching
 gem 'redis'
 gem 'bullet', group: :development
+gem 'bootsnap', require: false
 
 # Logging
 gem 'lograge'
