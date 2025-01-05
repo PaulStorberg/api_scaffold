@@ -36,7 +36,9 @@ group :development do
   gem 'bullet'
   gem 'bundler-audit', require: false
   gem 'rubocop', require: false
+  gem 'rubocop-factory_bot'
   gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
 end
 
 # Performance & Caching

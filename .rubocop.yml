@@ -1,5 +1,37 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - 'config/routes.rb'
-    - 'config/environments/*.rb' 
+    - 'config/environments/*.rb'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'app/helpers/**/*'
+    - 'db/migrate/**/*'
+    - 'app/controllers/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Layout/LineLength:
+  Max: 120
