@@ -1,0 +1,36 @@
+# Sample configuration file for Sidekiq.
+# Options here can still be overridden by cmd line args.
+
+:verbose: false
+:concurrency: 10
+:timeout: 25
+
+# Sidekiq will run this many threads in parallel to process jobs
+:max_retries: 3
+
+# Redis connection
+:url: redis://localhost:6379/0
+
+# Sidekiq queues and their priorities (lower number = higher priority)
+:queues:
+  - [critical, 2]
+  - [default, 1]
+  - [low, 1]
+
+# Schedule for recurring jobs (optional)
+:schedule:
+  daily_maintenance:
+    cron: "0 0 * * *" # every day at midnight
+    class: DailyJob
+    queue: default
+    args:
+      arg1: "test_value"
+
+# Sidekiq options
+# cron: "*/1 * * * *" every minute
+# cron: "*/5 * * * *" every 5 minutes
+# cron: "0 * * * *" every hour
+# cron: "0 0 * * *" every day at midnight
+# cron: "0 0 0 * *" every month at midnight
+# cron: "0 0 0 0 *" every year at midnight
+# cron: "0 0 0 0 0" every decade at midnight
