@@ -325,6 +325,7 @@ GEM
     rubocop-rspec (3.3.0)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
+    secure_headers (7.1.0)
     securerandom (0.4.1)
     sidekiq (7.3.7)
       connection_pool (>= 2.3.0)
@@ -386,6 +387,7 @@ DEPENDENCIES
   rubocop-factory_bot
   rubocop-rails
   rubocop-rspec
+  secure_headers
   sidekiq
   sidekiq-cron
 

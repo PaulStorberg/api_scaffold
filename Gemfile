@@ -10,6 +10,10 @@ gem 'devise'
 gem 'omniauth-apple'
 gem 'omniauth-google-oauth2'
 
+# Security
+gem 'pundit'
+gem 'secure_headers'
+
 # Database
 gem 'pg'
 
@@ -19,9 +23,6 @@ gem 'graphql'
 # Background Jobs
 gem 'sidekiq'
 gem 'sidekiq-cron'
-
-# Authorization
-gem 'pundit'
 
 # Testing
 group :development, :test do
