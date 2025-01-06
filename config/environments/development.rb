@@ -83,4 +83,16 @@ Rails.application.configure do
     # Log to file
     Bullet.add_footer = true
   end
+
+  # Configure Lograge for structured logging
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.lograge.custom_options = lambda do |event|
+    {
+      time: Time.current,
+      params: event.payload[:params].except(*%w[controller action format id]),
+      user_id: event.payload[:user_id],
+      graphql_operation: event.payload[:graphql_operation]
+    }
+  end
 end
