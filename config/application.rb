@@ -34,6 +34,10 @@ module ApiScaffold
         current_dataloader_source: -> { GraphQL::Current.dataloader_source_class }
       }
     ]
+
+    # Add GraphQL paths to autoload before loading defaults
+    config.autoload_paths << Rails.root.join('app/graphql')
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
@@ -58,7 +62,5 @@ module ApiScaffold
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
     config.session_store :cookie_store, key: '_api_scaffold_session'
-
-    config.autoload_paths += %W[#{config.root}/app/graphql]
   end
 end
