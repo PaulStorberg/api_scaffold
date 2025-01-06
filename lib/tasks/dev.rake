@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :dev do
-  desc 'Seed development data'
+  desc 'Creates sample data for development'
   task sample_data: :environment do
     if Rails.env.development?
       # Create test users

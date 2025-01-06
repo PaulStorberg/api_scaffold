@@ -58,5 +58,7 @@ module ApiScaffold
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
     config.session_store :cookie_store, key: '_api_scaffold_session'
+
+    config.autoload_paths += %W[#{config.root}/app/graphql]
   end
 end

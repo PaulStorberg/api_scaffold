@@ -3,7 +3,7 @@
 # Testing your GraphQL API:
 # docker-compose exec web rails c
 # rails dev:sample_data
-# ApiScaffoldSchema.execute("{ users { id email } }")
+# ApiScaffoldSchema.execute("{ users { id email } }").to_h
 
 module Types
   # QueryType is the root of this GraphQL API
