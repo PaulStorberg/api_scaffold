@@ -24,18 +24,14 @@ gem 'graphql'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
-# Testing
+# Testing & Development
 group :development, :test do
-  gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'rspec-rails'
-end
-
-# Linting & Security
-group :development do
   gem 'brakeman', require: false
   gem 'bullet'
   gem 'bundler-audit', require: false
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-factory_bot'
   gem 'rubocop-rails', require: false
