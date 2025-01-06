@@ -37,7 +37,7 @@ module ApiScaffold
 
     # Add GraphQL paths to autoload before loading defaults
     config.autoload_paths << Rails.root.join('app/graphql')
-    
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
