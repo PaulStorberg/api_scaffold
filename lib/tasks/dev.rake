@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
 namespace :dev do
-  desc 'Creates sample data for development'
+  desc 'Seed development data'
   task sample_data: :environment do
-    return unless Rails.env.development?
+    if Rails.env.development?
+      # Create test users
+      5.times do |i|
+        User.create!(
+          email: "user#{i}@example.com",
+          password: 'password123',
+          password_confirmation: 'password123'
+        )
+      end
 
-    puts 'Creating sample users...'
-    10.times do
-      FactoryBot.create(:user)
-      print '.'
+      puts "Created #{User.count} users"
+    else
+      puts 'This task can only be run in development'
     end
-    puts "\nCreated #{User.count} users with random emails!"
   end
 end

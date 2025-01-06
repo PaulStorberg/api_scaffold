@@ -27,27 +27,26 @@ class GraphqlController < ApplicationController
   # Handle variables in form data, JSON body, or a blank value
   def prepare_variables(variables_param)
     case variables_param
-    when String
-      if variables_param.present?
-        JSON.parse(variables_param) || {}
-      else
-        {}
-      end
-    when Hash
-      variables_param
-    when ActionController::Parameters
-      variables_param.to_unsafe_hash # GraphQL-Ruby will validate name and type of incoming variables.
-    when nil
-      {}
+    when String then handle_string_param(variables_param)
+    when Hash then variables_param
+    when ActionController::Parameters then variables_param.to_unsafe_hash
+    when nil then {}
     else
       raise ArgumentError, "Unexpected parameter: #{variables_param}"
     end
   end
 
-  def handle_error_in_development(e)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+  def handle_string_param(param)
+    return {} if param.blank?
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: :internal_server_error
+    JSON.parse(param) || {}
+  end
+
+  def handle_error_in_development(err)
+    logger.error err.message
+    logger.error err.backtrace.join("\n")
+
+    render json: { errors: [{ message: err.message, backtrace: err.backtrace }], data: {} },
+           status: :internal_server_error
   end
 end

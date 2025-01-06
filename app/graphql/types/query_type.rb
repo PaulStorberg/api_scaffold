@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 # Testing your GraphQL API:
-# Bundle exec rails c
+# docker-compose exec web rails c
 # rails dev:sample_data
-# query = "{ users { id email } }"
-# result = GraphqlApiSchema.execute(query)
+# ApiScaffoldSchema.execute("{ users { id email } }")
 
 module Types
-  # Root query type for the GraphQL API
+  # QueryType is the root of this GraphQL API
   class QueryType < Types::BaseObject
-    field :users, [UserType], null: false
+    field :users, [Types::UserType], null: false, description: 'Returns a list of users'
 
     def users
       User.all

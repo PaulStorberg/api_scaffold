@@ -35,3 +35,5 @@ Style/StringLiterals:
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - 'config/initializers/devise.rb'
