@@ -33,6 +33,7 @@ group :development, :test do
   gem 'bundler-audit', require: false
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pundit-matchers'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-factory_bot'

@@ -37,6 +37,7 @@ end
 
 # Add FactoryBot support
 require 'factory_bot_rails'
+require 'pundit/rspec'
 
 RSpec.configure do |config|
   # Include FactoryBot methods
