@@ -67,4 +67,20 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Configure Bullet for N+1 query detection
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.rails_logger = true
+
+    # Detect N+1 queries and unused eager loading
+    Bullet.add_safelist(type: :n_plus_one_query, class_name: 'User', association: :roles)
+
+    # Log to console
+    Bullet.console = true
+
+    # Log to file
+    Bullet.add_footer = true
+  end
 end
