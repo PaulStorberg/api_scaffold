@@ -8,7 +8,7 @@ describe UserPolicy do
   let(:user) { create(:user) }
   let(:record) { create(:user) }
 
-  context 'being a visitor' do
+  context 'when user is a visitor' do
     let(:user) { nil }
 
     it { is_expected.to forbid_action(:show) }
@@ -17,7 +17,7 @@ describe UserPolicy do
     it { is_expected.to forbid_action(:destroy) }
   end
 
-  context 'being a regular user' do
+  context 'when user is a regular user' do
     it { is_expected.to forbid_action(:show) }
     it { is_expected.to forbid_action(:create) }
     it { is_expected.to forbid_action(:update) }
