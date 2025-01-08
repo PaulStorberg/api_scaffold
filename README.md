@@ -85,8 +85,16 @@ rails server
 ```
 
 #### 4. Accessing the Application
-- GraphQL API endpoint: http://localhost:3000/graphql
-- GraphiQL interface (if enabled in development): http://localhost:3000/graphiql
+- GraphQL API endpoint: http://localhost:3000/graphql (POST requests only)
+- Use [GraphQL Playground](https://github.com/graphql/graphql-playground) or [Insomnia](https://insomnia.rest/) for GraphQL testing
+- Sidekiq interface: http://localhost:3000/sidekiq
+
+For testing GraphQL queries, we recommend:
+1. [GraphQL Playground Desktop](https://github.com/graphql/graphql-playground/releases)
+2. [Insomnia](https://insomnia.rest/)
+3. [Postman](https://www.postman.com/)
+
+Set the GraphQL endpoint to: `http://localhost:3000/graphql`
 
 ### Development
 
@@ -117,7 +125,7 @@ bundle exec rubocop
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-### Creator
+### Author
 - [Paul Storberg](https://www.paulstorberg.com)
 - [Github](https://www.github.com/PaulStorberg)
 

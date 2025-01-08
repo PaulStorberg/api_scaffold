@@ -12,8 +12,11 @@ RUN apt-get update -qq && \
 WORKDIR /app
 
 # Install gems
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
+COPY Gemfile ./
+RUN bundle config set force_ruby_platform true && \
+    bundle install --jobs 20 --retry 5 && \
+    bundle lock --add-platform x86_64-linux && \
+    bundle install
 
 # Copy application code
 COPY . .
@@ -21,6 +24,7 @@ COPY . .
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
+
 ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 3000

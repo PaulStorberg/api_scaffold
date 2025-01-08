@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 # Rails
+gem 'rack-cors'
 gem 'rails', '~> 7.1.0'
 
 # Auth
